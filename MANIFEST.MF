@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: com.commander4j.client.LogoClient
+Class-Path: c4j_logoclient.jar 
+ lib/jsch-2.27.9.jar 

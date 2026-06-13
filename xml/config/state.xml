@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<state>
+    <type>PL3 (TCP)</type>
+    <port>8100</port>
+    <host>127.0.0.1</host>
+    <user/>
+    <remotePath>/c0/</remotePath>
+    <localPath/>
+    <logSavePath>labeller/log</logSavePath>
+    <filter>All files (*.*)</filter>
+    <autoDir>false</autoDir>
+    <heartbeat>false</heartbeat>
+    <heartbeatIntervalMs>30000</heartbeatIntervalMs>
+    <eol>&lt;CR&gt;</eol>
+    <timeoutMs>15000</timeoutMs>
+    <wireTimestamps>false</wireTimestamps>
+</state>
