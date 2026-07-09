@@ -842,6 +842,8 @@ public class LogoClient extends JFrame
 
 	private void onConnect()
 	{
+		commitComboEditors();
+
 		String type = (String) typeCombo.getSelectedItem();
 		String host = String.valueOf(hostCombo.getSelectedItem()).trim();
 		String portRaw = portCombo.getSelectedItem().toString().trim().split("\\s")[0];
@@ -2518,8 +2520,21 @@ public class LogoClient extends JFrame
 	// State persistence
 	// =========================================================================
 
+	private void commitComboEditors()
+	{
+		for (JComboBox4j<String> combo : java.util.List.of(portCombo, hostCombo, dirFilterCombo))
+		{
+			if (combo.isEditable())
+			{
+				combo.setSelectedItem(combo.getEditor().getItem());
+			}
+		}
+	}
+
 	private void saveState()
 	{
+		commitComboEditors();
+
 		try
 		{
 			STATE_FILE.getParentFile().mkdirs();

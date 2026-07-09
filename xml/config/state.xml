@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <state>
     <type>PL3 (TCP)</type>
-    <port>8100</port>
+    <port>8101</port>
     <host>127.0.0.1</host>
     <user/>
     <remotePath>/c0/</remotePath>
-    <localPath/>
+    <localPath>/Users/dave/Commander4j/Source/b8/Scratchpad/c4j_logoclient</localPath>
     <logSavePath>labeller/log</logSavePath>
     <filter>All files (*.*)</filter>
     <autoDir>false</autoDir>
