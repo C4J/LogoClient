@@ -391,11 +391,11 @@ public class LogoClient extends JFrame
 
 		JLabel4j_std lblRemotePath = new JLabel4j_std("Remote Path");
 		lblRemotePath.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblRemotePath.setBounds(6, 118, 86, 24);
+		lblRemotePath.setBounds(6, 118, 134, 24);
 		dp.add(lblRemotePath);
 
 		comboBoxRemotePath = new JComboBox4j<>();
-		comboBoxRemotePath.setBounds(98, 118, 138, 24);
+		comboBoxRemotePath.setBounds(152, 118, 138, 24);
 		comboBoxRemotePath.addActionListener(_ -> {
 			if (!suppressPathRefresh && labeller != null)
 				doListDirectory(selectedFilter());
@@ -403,8 +403,9 @@ public class LogoClient extends JFrame
 		dp.add(comboBoxRemotePath);
 
 		JLabel4j_std lblMaskFilter = new JLabel4j_std("Mask/Filter");
+		lblMaskFilter.setText("Remote File Filter");
 		lblMaskFilter.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblMaskFilter.setBounds(248, 118, 68, 24);
+		lblMaskFilter.setBounds(408, 118, 112, 24);
 		dp.add(lblMaskFilter);
 
 		String[] filterLabels = new String[DIR_FILTERS.length];
@@ -412,31 +413,32 @@ public class LogoClient extends JFrame
 			filterLabels[i] = DIR_FILTERS[i][0];
 		dirFilterCombo = new JComboBox4j<>(filterLabels);
 		dirFilterCombo.setEditable(true);
-		dirFilterCombo.setBounds(323, 118, 203, 24);
+		dirFilterCombo.setBounds(527, 118, 203, 24);
 		dp.add(dirFilterCombo);
 
 		// ── Row y=120: Local download folder ─────────────────────────────────
 
 		JLabel4j_std lblLocalPath = new JLabel4j_std("Local Path");
+		lblLocalPath.setText("Working Folder");
 		lblLocalPath.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblLocalPath.setBounds(6, 12, 86, 24);
+		lblLocalPath.setBounds(6, 12, 134, 24);
 		dp.add(lblLocalPath);
 
 		downloadLocalPath = new JTextField4j();
 		downloadLocalPath.setColumns(10);
-		downloadLocalPath.setBounds(98, 12, 509, 24);
+		downloadLocalPath.setBounds(152, 12, 578, 24);
 		dp.add(downloadLocalPath);
 
-		btnBrowseLocalFolder.setBounds(612, 6, 36, 36);
+		btnBrowseLocalFolder.setBounds(742, 6, 36, 36);
 		btnBrowseLocalFolder.setToolTipText("Browse");
 		dp.add(btnBrowseLocalFolder);
 
 		pollIntervalSpinner = new JSpinner4j(new SpinnerNumberModel(30, 5, 300, 5));
-		pollIntervalSpinner.setToolTipText("Poll interval in seconds");
-		pollIntervalSpinner.setBounds(555, 117, 52, 25);
+		pollIntervalSpinner.setToolTipText("Log Poll interval in seconds");
+		pollIntervalSpinner.setBounds(678, 81, 52, 25);
 		dp.add(pollIntervalSpinner);
 
-		logPollBtn.setBounds(612, 112, 36, 36);
+		logPollBtn.setBounds(742, 112, 36, 36);
 		logPollBtn.setToolTipText("Toggle polling");
 		logPollBtn.setPreferredSize(new Dimension(36, 36));
 		logPollBtn.setMaximumSize(new Dimension(36, 36));
@@ -449,39 +451,52 @@ public class LogoClient extends JFrame
 		// ── Row y=156: Log save path ─────────────────────────────────────────
 
 		JLabel4j_std lblLogPath = new JLabel4j_std("Log Path");
+		lblLogPath.setText("Labeller Log Save Path");
 		lblLogPath.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblLogPath.setBounds(6, 82, 86, 24);
+		lblLogPath.setBounds(6, 82, 134, 24);
 		dp.add(lblLogPath);
+		
+		JLabel4j_std lblLogPollInterval = new JLabel4j_std("Log Path");
+		lblLogPollInterval.setText("Log Poll Interval");
+		lblLogPollInterval.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblLogPollInterval.setBounds(532, 81, 134, 24);
+		dp.add(lblLogPollInterval);
 
 		logSavePath = new JTextField4j();
 		logSavePath.setColumns(10);
 		logSavePath.setToolTipText("Directory where one file per SSCC is written when polling");
-		logSavePath.setBounds(98, 82, 509, 24);
+		logSavePath.setBounds(152, 82, 418, 24);
 		dp.add(logSavePath);
 
-		btnBrowseLogPath.setBounds(612, 76, 36, 36);
+		btnBrowseLogPath.setBounds(742, 76, 36, 36);
 		btnBrowseLogPath.setToolTipText("Browse");
 		dp.add(btnBrowseLogPath);
 
 		// ── Row y=192: Local file for upload ─────────────────────────────────
 
 		JLabel4j_std lblLocalFile = new JLabel4j_std("Local File");
+		lblLocalFile.setText("Upload File");
 		lblLocalFile.setHorizontalAlignment(SwingConstants.TRAILING);
-		lblLocalFile.setBounds(6, 46, 86, 24);
+		lblLocalFile.setBounds(6, 46, 134, 24);
 		dp.add(lblLocalFile);
+		
+		JLabel4j_std lblLocalFile2 = new JLabel4j_std("Local File");
+		lblLocalFile2.setHorizontalAlignment(SwingConstants.TRAILING);
+		lblLocalFile2.setBounds(806, 12, 86, 24);
+		dp.add(lblLocalFile2);
 
 		uploadLocalPath = new JTextField4j();
 		uploadLocalPath.setColumns(10);
-		uploadLocalPath.setBounds(98, 46, 509, 24);
+		uploadLocalPath.setBounds(152, 46, 578, 24);
 		dp.add(uploadLocalPath);
 
-		btnBrowseLocalFile.setBounds(612, 41, 36, 36);
+		btnBrowseLocalFile.setBounds(742, 41, 36, 36);
 		btnBrowseLocalFile.setToolTipText("Browse");
 		dp.add(btnBrowseLocalFile);
 
 		dirCurrentLabel = new JLabel4j_std("Listing:  (not connected)");
 		dirCurrentLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		dirCurrentLabel.setBounds(346, 530, 256, 25);
+		dirCurrentLabel.setBounds(474, 530, 256, 25);
 		dp.add(dirCurrentLabel);
 
 		autoDirToggle.setBounds(10, 530, 90, 25);
@@ -529,10 +544,10 @@ public class LogoClient extends JFrame
 		dirTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 		dirTable.getColumnModel().getColumn(0).setPreferredWidth(50);
 		dirTable.getColumnModel().getColumn(0).setMaxWidth(50);
-		dirTable.getColumnModel().getColumn(1).setPreferredWidth(240);
-		dirTable.getColumnModel().getColumn(1).setMaxWidth(240);
-		dirTable.getColumnModel().getColumn(2).setPreferredWidth(80);
-		dirTable.getColumnModel().getColumn(2).setMaxWidth(80);
+		dirTable.getColumnModel().getColumn(1).setPreferredWidth(340);
+		dirTable.getColumnModel().getColumn(1).setMaxWidth(340);
+		dirTable.getColumnModel().getColumn(2).setPreferredWidth(105);
+		dirTable.getColumnModel().getColumn(2).setMaxWidth(105);
 		dirTable.getColumnModel().getColumn(3).setPreferredWidth(155);
 		dirTable.getColumnModel().getColumn(3).setMaxWidth(155);
 		dirTable.getColumnModel().getColumn(4).setPreferredWidth(45);
@@ -575,7 +590,7 @@ public class LogoClient extends JFrame
 		dirModel.addTableModelListener(_ -> updateDeleteBtn());
 
 		JScrollPane dirScrollPane = new JScrollPane();
-		dirScrollPane.setBounds(10, 160, 595, 361);
+		dirScrollPane.setBounds(10, 160, 720, 361);
 		dirScrollPane.setViewportView(dirTable); // must be setViewportView, not
 													// add()
 		dp.add(dirScrollPane);
@@ -583,27 +598,27 @@ public class LogoClient extends JFrame
 		// ── Row y=398: Action buttons
 		// ─────────────────────────────────────────
 
-		uploadBtn.setBounds(612, 163, 36, 36);
+		uploadBtn.setBounds(742, 163, 36, 36);
 		uploadBtn.setToolTipText("Upload");
 		dp.add(uploadBtn);
 
-		dirListBtn.setBounds(612, 201, 36, 36);
+		dirListBtn.setBounds(742, 201, 36, 36);
 		dirListBtn.setToolTipText("Refresh");
 		dp.add(dirListBtn);
 
-		downloadBtn.setBounds(612, 239, 36, 36);
+		downloadBtn.setBounds(742, 239, 36, 36);
 		downloadBtn.setToolTipText("Download");
 		dp.add(downloadBtn);
 
-		selectAllBtn.setBounds(612, 277, 36, 36);
+		selectAllBtn.setBounds(742, 277, 36, 36);
 		selectAllBtn.setToolTipText("Select All");
 		dp.add(selectAllBtn);
 
-		unselectAllBtn.setBounds(612, 315, 36, 36);
+		unselectAllBtn.setBounds(742, 315, 36, 36);
 		unselectAllBtn.setToolTipText("Unselect All");
 		dp.add(unselectAllBtn);
 
-		deleteBtn.setBounds(612, 353, 36, 36);
+		deleteBtn.setBounds(742, 353, 36, 36);
 		deleteBtn.setToolTipText("Delete");
 		dp.add(deleteBtn);
 
@@ -625,15 +640,15 @@ public class LogoClient extends JFrame
 		activityLog.setCaretColor(Color.YELLOW);
 
 		JScrollPane actScrollPane = new JScrollPane(activityLog);
-		actScrollPane.setBounds(10, 560, 595, 219);
+		actScrollPane.setBounds(10, 560, 720, 219);
 		dp.add(actScrollPane);
 
-		btnActSave.setBounds(612, 559, 36, 36);
+		btnActSave.setBounds(742, 559, 36, 36);
 		btnActSave.setToolTipText("Save activity log…");
 		btnActSave.addActionListener(_ -> doSaveTextPane(activityLog.getText(), "activity"));
 		dp.add(btnActSave);
 
-		btnActClear.setBounds(612, 595, 36, 36);
+		btnActClear.setBounds(742, 595, 36, 36);
 		btnActClear.setToolTipText("Clear activity log");
 		btnActClear.addActionListener(_ -> activityLog.setText(""));
 		dp.add(btnActClear);
@@ -649,7 +664,7 @@ public class LogoClient extends JFrame
 		wirePane.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 11));
 
 		JScrollPane wireScrollPane = new JScrollPane(wirePane);
-		wireScrollPane.setBounds(680, 560, 846, 219);
+		wireScrollPane.setBounds(806, 560, 720, 219);
 		dp.add(wireScrollPane);
 
 		btnWireSave.setBounds(1532, 559, 36, 36);
@@ -681,11 +696,11 @@ public class LogoClient extends JFrame
 				new EmptyBorder(0, 6, 0, 6)));
 		lblMessageFile.setOpaque(true);
 		lblMessageFile.setBackground(new Color(241, 241, 241));
-		lblMessageFile.setBounds(680, 12, 846, 22);
+		lblMessageFile.setBounds(904, 12, 622, 22);
 		dp.add(lblMessageFile);
 
 		JScrollPane msgScrollPane = new JScrollPane((Component) null);
-		msgScrollPane.setBounds(680, 46, 846, 475);
+		msgScrollPane.setBounds(806, 46, 720, 475);
 		dp.add(msgScrollPane);
 
 		messagesField = new JTextArea();
@@ -693,38 +708,38 @@ public class LogoClient extends JFrame
 		msgScrollPane.setViewportView(messagesField);
 
 		JLabel4j_std lblEol = new JLabel4j_std("EOL");
-		lblEol.setBounds(680, 531, 32, 24);
+		lblEol.setBounds(806, 530, 32, 24);
 		dp.add(lblEol);
 
 		eolCombo = new JComboBox4j<>(new String[] { "<CR>", "<CR><LF>", "<LF>", "<NONE>" });
 		eolCombo.setToolTipText("End-of-line terminator used when transmitting");
-		eolCombo.setBounds(716, 531, 140, 24);
+		eolCombo.setBounds(842, 530, 140, 24);
 		eolCombo.setSelectedIndex(0);
 		dp.add(eolCombo);
 
 		// ── Messages pane action buttons (x=1527) ────────────────────────────
 
-		btnMsgOpen.setBounds(1532, 46, 36, 36);
+		btnMsgOpen.setBounds(1532, 6, 36, 36);
 		btnMsgOpen.setToolTipText("Open…");
 		dp.add(btnMsgOpen);
 
-		btnMsgClear.setBounds(1532, 82, 36, 36);
+		btnMsgClear.setBounds(1532, 42, 36, 36);
 		btnMsgClear.setToolTipText("Clear");
 		dp.add(btnMsgClear);
 
-		btnMsgSave.setBounds(1532, 118, 36, 36);
+		btnMsgSave.setBounds(1532, 78, 36, 36);
 		btnMsgSave.setToolTipText("Save");
 		dp.add(btnMsgSave);
 
-		btnMsgSaveAs.setBounds(1532, 154, 36, 36);
+		btnMsgSaveAs.setBounds(1532, 114, 36, 36);
 		btnMsgSaveAs.setToolTipText("Save As…");
 		dp.add(btnMsgSaveAs);
 
-		btnMsgSend.setBounds(1532, 190, 36, 36);
+		btnMsgSend.setBounds(1532, 150, 36, 36);
 		btnMsgSend.setToolTipText("Transmit");
 		dp.add(btnMsgSend);
 
-		btnAbout.setBounds(1532, 228, 36, 36);
+		btnAbout.setBounds(1532, 188, 36, 36);
 		btnAbout.setToolTipText("About");
 		btnAbout.setPreferredSize(new Dimension(36, 36));
 		btnAbout.setMaximumSize(new Dimension(36, 36));
@@ -734,7 +749,7 @@ public class LogoClient extends JFrame
 		});
 		dp.add(btnAbout);
 
-		btnLicense.setBounds(1532, 264, 36, 36);
+		btnLicense.setBounds(1532, 224, 36, 36);
 		btnLicense.setToolTipText("Licences");
 		btnLicense.setPreferredSize(new Dimension(36, 36));
 		btnLicense.setMaximumSize(new Dimension(36, 36));
@@ -744,7 +759,7 @@ public class LogoClient extends JFrame
 		});
 		dp.add(btnLicense);
 
-		quitBtn.setBounds(1532, 300, 36, 36);
+		quitBtn.setBounds(1532, 260, 36, 36);
 		dp.add(quitBtn);
 
 		quitBtn.setToolTipText("Quit");
