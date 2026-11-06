@@ -3,6 +3,7 @@ package com.commander4j.client.common;
 import com.jcraft.jsch.*;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -95,7 +96,8 @@ public class LogoClientSftp implements AutoCloseable {
      */
     public void connect(String user, String password) throws JSchException {
         session = jsch.getSession(user, host, port);
-        session.setPassword(password);
+        // JSch 2.28 deprecated the String forms in favour of UTF-8 byte arrays; null means no password.
+        session.setPassword(password == null ? null : password.getBytes(StandardCharsets.UTF_8));
         session.setConfig("StrictHostKeyChecking", strictHostKeyCheckingMode);
         session.setTimeout(timeoutMs);
         session.setServerAliveInterval(10_000);
@@ -115,7 +117,7 @@ public class LogoClientSftp implements AutoCloseable {
     public void connectWithKey(String user, String privateKeyPath, String passphrase)
             throws JSchException {
         if (passphrase != null) {
-            jsch.addIdentity(privateKeyPath, passphrase);
+            jsch.addIdentity(privateKeyPath, passphrase.getBytes(StandardCharsets.UTF_8));
         } else {
             jsch.addIdentity(privateKeyPath);
         }
