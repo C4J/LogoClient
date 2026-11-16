@@ -13,7 +13,7 @@ public class Common
 {
 
 	public static final String programName = "LogoClient";
-	public static final String programVersion = "2.09";
+	public static final String programVersion = "2.10";
 
 	// Shown in the About dialog (newlines collapse in its HTML rendering) and
 	// logged line-by-line at startup.
